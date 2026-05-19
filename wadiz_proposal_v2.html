@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>와디즈 펀딩 제안 | 정환희 PD</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange: #FF5C00;
+  --orange-light: #FF8040;
+  --orange-pale: #FFF3EC;
+  --black: #111111;
+  --gray-900: #1C1C1C;
+  --gray-700: #3D3D3D;
+  --gray-500: #6B6B6B;
+  --gray-300: #C4C4C4;
+  --gray-100: #F5F5F5;
+  --white: #FFFFFF;
+  --font: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 5%;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.nav-logo {
+  font-size: 16px; font-weight: 800; color: var(--orange);
+  letter-spacing: -0.03em;
+}
+
+.nav-cta {
+  background: var(--orange);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: #e04e00; transform: translateY(-1px); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  padding: 120px 5% 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,92,0,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -50px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,92,0,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,92,0,0.15);
+  border: 1px solid rgba(255,92,0,0.4);
+  color: var(--orange-light);
+  font-size: 13px; font-weight: 600;
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--orange);
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.55);
+  max-width: 800px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  font-weight: 400;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px; font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(255,92,0,0.4);
+}
+.btn-primary:hover { background: #e04e00; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,92,0,0.5); }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-size: 16px; font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.hero-stat-num {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-label {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 100px 5%; }
+
+.section-eyebrow {
+  font-size: 13px; font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--gray-500);
+  line-height: 1.7;
+  max-width: 800px;
+}
+
+/* ── HOW IT WORKS ── */
+#how {
+  background: var(--gray-100);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px;
+  margin-top: 56px;
+  background: var(--gray-300);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.step {
+  background: var(--white);
+  padding: 48px 36px;
+  position: relative;
+}
+
+.step-num {
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--orange);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.step-title {
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.step-desc {
+  font-size: 15px;
+  color: var(--gray-500);
+  line-height: 1.8;
+  letter-spacing: 0.005em;
+}
+
+.step-badge {
+  display: inline-block;
+  margin-top: 16px;
+  background: var(--orange-pale);
+  color: var(--orange);
+  font-size: 12px; font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+}
+
+/* ── CATEGORIES ── */
+#categories {
+  background: var(--white);
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+@media (max-width: 640px) {
+  .cat-grid { grid-template-columns: 1fr; }
+}
+
+.cat-card {
+  border: 1.5px solid var(--gray-100);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.cat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+}
+.cat-card.tech::before { background: linear-gradient(90deg, #5B8CFF, #43E6B5); }
+.cat-card.beauty::before { background: linear-gradient(90deg, #FF6B9D, #FF9A5C); }
+.cat-card.fashion::before { background: linear-gradient(90deg, #A78BFA, #F472B6); }
+.cat-card.food::before { background: linear-gradient(90deg, #34D399, #F5C842); }
+
+.cat-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255,92,0,0.1);
+  transform: translateY(-4px);
+}
+
+.cat-emoji { font-size: 32px; margin-bottom: 14px; }
+
+.cat-name {
+  font-size: 18px; font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.cat-stats { display: flex; flex-direction: column; gap: 10px; }
+
+.cat-stat-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px;
+}
+.cat-stat-label { color: var(--gray-500); }
+.cat-stat-value { font-weight: 700; font-size: 14px; }
+
+.roas-bar-wrap {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.roas-title-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+.roas-title-label {
+  font-size: 12px; color: var(--gray-500); font-weight: 500;
+}
+.roas-avg-badge {
+  font-size: 13px; font-weight: 800; color: var(--black);
+}
+
+.roas-range-wrap {
+  position: relative;
+  height: 36px;
+  display: flex; align-items: center;
+}
+
+.roas-track {
+  position: absolute; left: 0; right: 0;
+  height: 6px;
+  background: var(--gray-100);
+  border-radius: 3px;
+}
+
+.roas-fill {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.cat-card.tech .roas-fill { background: linear-gradient(90deg, #5B8CFF, #43E6B5); }
+.cat-card.beauty .roas-fill { background: linear-gradient(90deg, #FF6B9D, #FF9A5C); }
+.cat-card.fashion .roas-fill { background: linear-gradient(90deg, #A78BFA, #F472B6); }
+.cat-card.food .roas-fill { background: linear-gradient(90deg, #34D399, #F5C842); }
+
+.roas-dot {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2.5px solid;
+  transform: translateX(-50%);
+  top: 50%; margin-top: -7px;
+  z-index: 2;
+}
+.cat-card.tech .roas-dot { border-color: #5B8CFF; }
+.cat-card.beauty .roas-dot { border-color: #FF6B9D; }
+.cat-card.fashion .roas-dot { border-color: #A78BFA; }
+.cat-card.food .roas-dot { border-color: #34D399; }
+
+.roas-markers {
+  display: flex; justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--gray-500);
+  font-family: var(--font);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+.roas-markers .mid {
+  text-align: center;
+  font-weight: 800;
+  color: var(--black);
+  font-size: 13px;
+}
+
+/* ── COST / FEE ── */
+#cost {
+  background: var(--black);
+  color: var(--white);
+}
+
+.cost-subheading {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+#cost .section-title { color: var(--white); }
+#cost .section-sub { color: rgba(255,255,255,0.5); }
+
+.cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 56px;
+}
+
+@media (max-width: 640px) { .cost-grid { grid-template-columns: 1fr; } }
+
+.cost-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+.cost-card-title {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.cost-main {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cost-main span { color: var(--orange); }
+.cost-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+}
+
+.cost-buckets {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 14px;
+}
+.bucket-tag {
+  background: rgba(255,92,0,0.15);
+  border: 1px solid rgba(255,92,0,0.3);
+  color: var(--orange-light);
+  font-size: 12px; font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* ── CASES ── */
+#cases { background: var(--gray-100); }
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.case-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.case-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255,92,0,0.1);
+}
+
+.case-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 16px;
+  font-size: 12px; font-weight: 600;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,92,0,0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, gap 0.2s;
+}
+.case-link:hover { border-color: var(--orange); gap: 8px; }
+
+.case-tag {
+  display: inline-block;
+  background: var(--orange-pale);
+  color: var(--orange);
+  font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 100px;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.case-title {
+  font-size: 15px; font-weight: 700;
+  margin-bottom: 18px;
+  line-height: 1.45;
+  color: var(--gray-700);
+}
+
+.case-metrics {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.case-metric {
+  background: var(--gray-100);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.case-metric-label {
+  font-size: 11px; color: var(--gray-500);
+  margin-bottom: 4px;
+}
+.case-metric-value {
+  font-size: 18px; font-weight: 800;
+  color: var(--black);
+  letter-spacing: -0.03em;
+}
+.case-metric-value.highlight { color: var(--orange); }
+
+/* ── CTA ── */
+#cta {
+  background: var(--orange);
+  text-align: center;
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+#cta::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.15) 0%, transparent 60%);
+}
+
+.cta-title {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cta-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 48px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white);
+  color: var(--orange);
+  padding: 18px 40px;
+  border-radius: 14px;
+  font-size: 17px; font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+
+.cta-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  position: relative;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--gray-900);
+  color: rgba(255,255,255,0.4);
+  padding: 40px 5%;
+  font-size: 13px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+footer strong { color: rgba(255,255,255,0.7); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.faq-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  font-size: 13px; font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+  background: var(--orange-pale);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.faq-link:hover { background: #fde3d4; }
+
+.cta-service-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  position: relative;
+}
+.cta-service-link:hover { color: var(--white); border-color: var(--white); }
+
+/* ── FAQ ── */
+.faq-list {
+  margin-top: 48px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1.5px solid var(--gray-100);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq-item:has(.faq-a.open) {
+  border-color: var(--orange);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.faq-q:hover { background: var(--gray-100); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 400;
+  color: var(--gray-500);
+  transition: background 0.2s, transform 0.3s, color 0.2s;
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.2s;
+}
+
+.faq-a.open {
+  max-height: 300px;
+  padding: 0 24px 22px;
+}
+
+.faq-a p {
+  font-size: 15px;
+  color: var(--gray-500);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.faq-a strong { color: var(--black); font-weight: 700; }
+
+.faq-q.active .faq-icon {
+  background: var(--orange);
+  color: var(--white);
+  transform: rotate(45deg);
+}
+
+/* ── PD INTRO ── */
+#pd { background: var(--white); }
+
+.pd-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 56px;
+}
+
+.pd-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), #ff9a5c);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.pd-name {
+  font-size: 28px; font-weight: 900;
+  letter-spacing: -0.02em; margin-bottom: 6px;
+}
+
+.pd-role {
+  font-size: 14px; color: var(--gray-500);
+  margin-bottom: 20px; line-height: 1.6;
+}
+
+.pd-role strong {
+  display: inline-block;
+  background: var(--orange-pale);
+  color: var(--orange);
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  margin-right: 6px; margin-bottom: 4px;
+}
+
+.pd-stats-row {
+  display: flex; gap: 28px; flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.pd-stat-num {
+  font-size: 30px; font-weight: 900;
+  color: var(--orange);
+  letter-spacing: -0.03em; line-height: 1;
+}
+
+.pd-stat-label {
+  font-size: 12px; color: var(--gray-500);
+  margin-top: 4px;
+}
+
+.pd-desc {
+  font-size: 15px; color: var(--gray-500);
+  line-height: 1.85; letter-spacing: 0.01em;
+}
+
+.ref-section-label {
+  font-size: 12px; font-weight: 700;
+  color: var(--gray-500);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ref-card {
+  border: 1.5px solid var(--gray-100);
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--black);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  display: block;
+}
+
+.ref-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 6px 24px rgba(255,92,0,0.1);
+  transform: translateY(-2px);
+}
+
+.ref-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 8px; border-radius: 100px;
+  margin-bottom: 10px; letter-spacing: 0.04em;
+}
+
+.ref-tag.beauty { background: rgba(255,107,157,0.12); color: #FF6B9D; }
+.ref-tag.outdoor { background: rgba(67,230,181,0.12); color: #2db891; }
+.ref-tag.tech { background: rgba(91,140,255,0.12); color: #5B8CFF; }
+
+.ref-title {
+  font-size: 14px; font-weight: 700;
+  margin-bottom: 6px; line-height: 1.4;
+}
+
+.ref-highlight {
+  font-size: 13px; font-weight: 800;
+  color: var(--orange); margin-bottom: 4px;
+}
+
+.ref-desc {
+  font-size: 12px; color: var(--gray-500); line-height: 1.5;
+}
+
+.ref-arrow {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px; font-weight: 600;
+  color: var(--orange); opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  section { padding: 72px 5%; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 24px; }
+  .pd-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .ref-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; }
+  .ref-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">와디즈 PD · 정환희</div>
+  <a href="http://pf.kakao.com/_ybqsX" target="_blank" class="nav-cta">💬 카카오 문의하기</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">2026년 최신 데이터 기반</div>
+  <h1 class="hero-title">
+    온라인 팝업스토어<br>
+    <em>와디즈</em>입니다
+  </h1>
+  <p class="hero-sub">
+    와디즈 펀딩은 '온라인 팝업스토어'입니다. 1~2달 간 집중적인 마케팅으로 제품의 팬덤을 만들 수 있어요.<br>
+    테크·뷰티·패션·푸드 브랜드를 직접 기획하고 성과를 만들어드립니다.
+  </p>
+  <div class="hero-actions">
+    <a href="http://pf.kakao.com/_ybqsX" target="_blank" class="btn-primary">💬 무료 상담 신청하기</a>
+    <a href="#categories" class="btn-secondary">카테고리별 성과 보기 →</a>
+    <a href="https://www.wadiz.kr/web/main" target="_blank" class="btn-secondary">와디즈 홈페이지 →</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num"><span>2,783</span>건+</div>
+      <div class="hero-stat-label">2026년 기준 분석 프로젝트</div>
+    </div>
+    <div>
+      <div class="hero-stat-num"><span>82</span>%</div>
+      <div class="hero-stat-label">2026년 기준 펀딩 성공률</div>
+    </div>
+    <div>
+      <div class="hero-stat-num"><span>254</span>억+</div>
+      <div class="hero-stat-label">2026년 기준 누적 펀딩 금액</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">수수료 <span>18</span>%</div>
+      <div class="hero-stat-label">와디즈 수수료 (PG·컨설팅 포함)</div>
+    </div>
+  </div>
+</section>
+
+<!-- PD INTRO -->
+<section id="pd">
+  <div class="section-eyebrow reveal">담당 PD 소개</div>
+  <h2 class="section-title reveal reveal-delay-1">와디즈 5년차 PD가<br>직접 담당합니다</h2>
+
+  <div class="pd-wrap">
+    <div class="pd-left reveal">
+      <div class="pd-avatar" style="background:none; overflow:hidden; padding:0;">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAGQAZADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDGFKKBij8qoyFpR1opRQAopaQcUtAC0uKBS0AKBRQKWgBQOKjubm3s7WS5upo4YY1LO8jBQoHck1HeX1tYWb3N1KsaIMlm6Cvmb4ifEK58Uag9pazOunxuQqcYfHQ4H/16HoUlc6vx38ajcRyab4TLJHyr30i4J/65g9PqR9K8TuLmW5meeeR3ZjksxySaJD/D+JqAnc3HSou2aWSFBOCTTT1pe2fwppz0oEFIfegnHNNLUwHZpMg03NGCRmgBe9L6EUKjk8Kc07y5Qv3SKALNs6q/ILHHXOAKmZ0zu/1jfXpVJYpcHA5oKSryVNK47E7Pg5K0CQFuQc+tVSz9TmgSGmIsk5wRj+VPSQ1WWX16elSqQDkYI60hnS+GvFuo+GdRS4tnLw7svCWIB+hHQ19MeDfG+m+I9MR4roM4ADqx+dfcjqR2z2r5HALKRitPQfEGp+HdUFzYTGNjwy9mFNOwmrn2tijFcZ4B8cWXijRY98irdKMMvr6/Qj0+ldpVGYlKKKKACilo7UAJRS0YoEFJS0UDG0UtJQAlLRiloEJSiijtQAUUGjtQAlA60EUoFAGSKdikFKKAF70ooxS0AFKBxRiloABSjrQKUUAL3qve31tYWpuLuURxjuT1PoB3NWegrxn4xeNvsA/sHS5F+1TKRcTgcxqeNi+hPc0AtTjPiR8Rp/ENxJpOmAw6erfOxOXmPuew9hXnAByCBk9hUmzMgXnp/k1MkWUMuOvAFQ9TZKxRk4yo6nqaiAwauTxhcknnJH1qARkvjHJOKYgCjbk9hUJBOTV14sJgdT/KoZoyigAden0pDKhyzYAqVLSRhkjArRsLAudxWt2DTFIGRUOokaRpNnNxaY7jhSa0rbQnfHyfpXU2mmxjGVres9OQkYQYrGVc6IYe5x9v4ad8fLzWrB4OVly6/pXc2mlrgHZWqlmqr93mueWIZ1Rwq6nnJ8IQKvKVUufC8OMItelXNqNpwKxZoiHKkZpKtIJUInm9x4d2Z+XNYd3pLRNwuK9UuLYMPu1i3unpJGQVraFZ9TnnQR5hJE8bc0scnY8e9dDqWmFC3y1z0sJjY+3auqMrnHOHKXoDu6cEdRT50KlXA471SgkKuD3Fa2Ee03dqsgveG/EN94e1eO9spWUqRuA/iH48ZH/1u9fVPgjxbZeLPDkd5bSKJR8skXdG7ivjtTtfaeoOK7n4ZeMLnwv4yi+fNncMI5426HsGHoRnGaSdtAkrq59ZUYpsMizQJMn3XAYU6rMgoopaAEopaKAE7UUtFAxtL9aKMUAJS4oooEJiloooAKKKOtACUuKKPrQBlDpSikFLQAopwHNJ2xSgUAOFFFLQAAU4daBQOtAFLVtQg0vR7i/uXCRQRmRj7AV8ha3q0+veI7nU7g/NNIWCDoo7AV798b9b/sz4ffYY3USX0ojI77B8x/kK+b4FZhnuc0pFwJkQ7cjl3PH0q24EUYUY44+mKI02S7uMqAB7H/8AXTWJNxEhzgk/jSKI3hGUzyevPpUEcTGYAA5/nWlIp80HYPlPPv3qMoIpAQAWCgnPqaAIvJ3MC2SSeCP0qGSDddRJjouf1/8ArVqSqocKrD5QSffjFJHF5mpZ687c/Sploi4K7SL1habYxxWrHHg8ClhgwgAq4kPFcMpHpRiSWkYZhgV1enWRKrxWVpVmZJQdua7iwswkKkjH4VhOVjqpwHW1oEQZFSTQhc4AFXSoVarS5yfSsLm9jJnXgg/rWTcwAkkdq3pUG4ms24AwapSsZSRhTxjb0rMuIgQeK2LofNxVCQZHStkzGSOdu7QSKRj8a4nWrJoZtwGDXpckIJ6Vz+t6U1zbsYx8wHSuilUszkrU7o87Bw3vWpZSApsPI9Kz5omjnZHUhhUlq+2QgnjFdpwdSVyRMecHpTopGSYSKcEVFKxJyRg5pYm4H1pMEfZ3gPUl1f4e6Xfq+7zIRkd1YcFT9CPyxXRV5j8Dr8XXw4jgVgxt5XiYenOR+hr0/FaGT0YmKWij8KBBikpaWgBKSloxzQAlFLRQAlGKWigBuKWiigAooooASlopaAMkUtIKcKAFFKBSY5pwoELSikApwoGKKOAMngDnNKBQQCCp6GgD5t+OWovd+M7ezL5FvbhimeFLnP54xXnMEW3YTjn/AOtXpXxqtYx8Qj5eC720bOMdCSf6VwotmFupK/3Tj68f0pPc0WwADdhs8nJP6VCxU3Acfwtj+n9Kmbbls9QBnH4/1qLYArADIGeR9aQyzuj8lPm7lSQO2P8AGq84LO7g8Erzjtz/AIVCrMY+TkDIb6nmpz+8iYg8FBgeuCf8aACSYFGYdztHvzWjpqpJdRgEnAbr/vVlBN0QcZOPvex6Ve0icRX67wSquc/Q9/zqJu8WbUlaSOwjjAUcVYiQ7wPWpY4wYwRzkZGK29C0d7u5EjA7RXmOVj1Ywuanh/TjsWRkOBXVrEFXBHNFpaCCFVQY/CrPlMwwTXPKV2dkYqKKEvfmq0gIHBrUeAKORVOZBtyBSSGzKnbg81lXLYPHWta42gkk8Vl3QULkkEdjWkYMwnNGRctkE1QZgeKu3UkSKf3gH41jvcIXOHX25rZRZhKaLBANVpYd3T8acs2TgmpAQeho2J0ZwninRWQ/bYFyn8QHY1yYBWSvYLi3SeF4pBlWGDXm+taTJp1+yFTtzlWx1FdlGpfRnDXpcvvIy5OVAPali5wB1pr8jNCnDD610HN1Poz9nmTOi6sm7pMpI9Dj/P617Ua+ff2dJHOv60gkIQwI2zsSGI/ka+g6pbGctxMUtHegUyQopaKAG9qUil7UlACYpKdSdqAEo7UuKTmgAooooEFFLRQA3FLS0UDMkUtJTgPagAFPFN7U4UAKKWinYoGApwFIBS0CPnT4wLn4ou20kGGIHHt3rjLkl4Z1UAFc47dK9D+NFrs8UW9xtYbwU3Z642sP/QjXmrPuZ8nllHA/GkzRbFKNw673HB9/epkKuhHGeCf5VVVSHeH+6SR/n8afEDuEgGRyGApDsMiyskkTDpz9ev8ASp4uY244J4+n+TUDNtu0YcfwsT6dj9Oa67wl4Svtdv4VWCTy3IwwXIxnkfUdaiclFXZrSg5uyK+meHrrUIYDaQmbzlIZV+bBBxg+nb8xXeab8HtUeJZ7pBGG75wwHv717D4Y+Htho8UMlvjzdgDbu+Pb/PSu8bSttoDIy7egJOB09a4ZVJy+E9SFKnH4jwyw8EG1hSCRT8vBYfxe9dNaaTHaRhY0wK7W4gtEODLHuxnHQ1kXLQpJ8pGM1yuEnudcZRWxQS3yfapDBtXKj8KnDor8HjFVrm9EUTZAyKORdSnMqzhVUl2C+xNcjrXiKx0+Qq7MxUZbA6D61BrOsXRunMbFkP8AAe3uK4rUo5b6RnYNIWORXTTpxRx1asnohmreOWkdltotvpk/zrl7rxPqzyn964Q9RXQ2vhWe9lCpET7Yrq9O+GWUWS5UYx0YV0e0hE4/Z1JnlH9o3MpzKxP1JFOS5bftkZh74xXrN74H0+3Xf5Z3e3aueuNAto5CNnHap9tFlOhJbnMW946IGVjIg4K9xWzbyiSMPG2Vqc6FCeU2j1BGD+lPh0025+Xof0qJcrLjdbip8y4rK8Qaet7pDnA8yL51P8xW2IirZplxFuiIxkEVEdHcuS5lZnjske12UfhUJFa2r2v2XVJYccAnH07VmMvevQizy5KzPW/2ebgJ8Q7u3+bMtmSMdOGB5/Ovpuvlb4C+YPi3EUHH2WUP9MD+uK+qccVaMpbie9FLikpkhRRRQAUUUUAB6UlLSGgBPwopRRigBKOtFHWgQUdqPel70AFFFL2oGZIpcUUtAgpRSY9acBQMUU6mjpThQA4CnAU3tS0AeVfGvTGl0G01FEGIpfnPpnC/1H5V4Uw2TtggkDj/AD/nrX1H8QtNOq/D3UbdUDOsZkUE4wVGc/pXyvcPtYOD06+4P/16TLjsWNLtvtXiOG3c/JKQNwHTPf8Az6USWrabrUtrcAhUdkJIwD6fTIqzoIlOordRwtI0JyVHUjuB+BNek674OtL7TrPX5WxbyBftDAYYj+99TwPzrnqVFGVn1O2jRcocy6HC3fhG7n1m18iJo4JwpLjkAdDn045xXt+la54c8F6SLXTE3Ig3s8r4+bAzjuc+gH5VxMQ86RWnfyIYkEcMJOdijgE+p/rV+28G6v4lnxYWShO7uMn6kmptz25y/gvyGtc/Gm9LeXY20Q9ZGJY5PYc+g64qzaeP9e1CbfLc3SjoVMhdcZ44bnsKig+FsmnvvIhikA5K5fP59Pwq4vh4Ww+fc5HccVFSrGKsjSnSm3zMJtavZLgMTwDnA6Hjn/8AV9auWmoPK43sfzqm9qwb7v1zU9pZyPccbua5JTTOyMGjb8/cuc4rHvrogkAmu20nwy1za5LKMjqRxXNeJtIFjI65yRWadtTR66HDXh3zliBzx0qXStDl1K9SJE4J5PpVWWVfPwR0Ndt4XuYYYTIoy5HWtLmXKrnSaX4c07S7VWdULd885pmq3+nWcJkuLiG3i6fvHArhvHvj0eF41tY8TarOu5Yj0iU9CR/IVyl94Zv7n4W3Hj7xBq91fXDwzFdNsyVaBvuxvLJ/dDEOVTjAAJyTjaFFzM6teNJHT6v4y8M4aJb7e3+yhNctNqdhdtugulIPdlIrxne09pHbyWoEiStI94ZGLupAwpBOMDGeOeTXT2+mQJ4ct5ree4W9bkmNzgDPG7t07Vs8OktzlWLlJ2sd778YPQjmpFAI5NcppEmp2yf6RIJB9MZ+oro4LgScgY9QawkrG8bMlaMZ6Ux4+Knzk5pjYwcVKG0eceM7QRalHOAf3gwT7g1ybDqK9I8a2wk0JpgOYmDfhnB/pXnscLTzbU5JPArvpu8Tzqsfesd58Fd0fxa0+QNhQrhjjsVx+HavrPGK+R/htcah4a8ZJq72LSJDujMZbaH9ecdK+nvDvimw8SQM0EcltcIMvbS4yB6gjqK0jOL0vqZTpTS5mtDZxSEU8ikqzEbQetLig0AJSUtFACUYpe9HagBuPal/CgUlABRRR2oEGKBS0ooGNpaKWgDJFLSgUY5oAKcKSlFACinDgUmKWgBaUCkFOFAEc8QmtJItoO9SMHoa+R/FOkS6L4nvdNkK/upDjA7HkD8jX17XiPxr8PRwNb63HvaSVzG2BwFAzzQ9hxZj/B7R7fVhqJu03LDJGUI4O4Z5B616d4kiR7ODTo4wEQ7ztHQDoAPWuH+Bjp9j1WED5hKjfgRXrC2Anv8AzZApHYGvJrO1Vtnv4dXopI5/w/4SjlMctygWPrtPGfrXq2jWdvBZmC2hjhjx2H8/WsAYhRVHH0rm/FfxYsPCMBtLWNb3UTwI93yoff1Pt271CqSnI0cIxjc7HVf3edxAFcVf3ojkOBXknjbx147m0aXVdTvl05naIQWZ3I8yOHO5QP4V2cknPzDArzxNf1OfVofK1u7ljbYHdlMZVj94Dk8A9+9brDS3OZ4yCdkfRv22KTrgGtPRpFmvkjXGScDFeNaVf+MIdUFrDGNVtx1MwKcez9v1r27wlprG9gupEdBt3lC2dp9M9+e9YVYcr1OqnNSV0egwubexVAduB0rh/FCmdXPOa7MuHc/lXL+IYG8l2C+9cvU6opWPGr5WivGwO9bfhfVY7TVI/tAzHnmszU1/0ps+tUELRyBga6I3Sucs1c6vUfCOiap4iv8AXNVg+23N3MZFdnICLjCqB2wBUptZrezNla39zHalGj8ksSu1uox6HJ496q6fqZMQR2OOlaIOeQ1bKbsRyLqjkH8C6NDh4rG1BHOfKB5+hNNk0aCPontXYsFOA2TUT2iSHgUOcn1J5EtkcRLY7DwPwqHyjGeBg+1djLp6IDlayLu2VWPy81Nw9n1MtHOBmpgeKa0WD6Uo4HWhEtaFDV7QXmkXEBH30I/HFcV4N0uO8u2kcAmNsEenQ/0r0N13JiuY8HQG21PU0K4CzsFP410KVoM5nG9RM6d7RILcrAoDgZJxVnw3qN5o3iW2vDOzxhwWGc/KeGH5U+zkjlM5LZO7bjHYVRcFJ1x0DYrBPl1O6MFNcrPojgjKnIPQ+tBqrpMhn0CxmJyXt4z/AOOirdesnc+cas7DKMUtFAhKSlNFAxMUnanY79KQ0AN70UtFACUClpPagQdKO1HaloASlo7UooGZQpRSYFLQAtKKSlFAxwpaQU4fpQIMU4DikFOFAgwawvF+hReIPC9xaSbsqpdNvXODW92pwxkZ5oGeC/B5ZNN8ca3pM6+W6xD5Cc4KOQf5ivdLeIHDAZrxueBvD/7TEcxBSDUw8QJ6MxQH/wBCGK9r0/awH06V5WMjadz3MBLmp2MbxNPcWuhTyWu4T7SIyBnBPQ15FoHga/8A7eTV9VLXc+7IjK5VOeMnP/6zXuGt20VwqxnkZ3EUumWJhfMaCsaVTlOyUFLc4Dx18Ph44tbR3glgvLUFBcQx7xtPOxhxx368H61ymnfDHSfD86mdPtl0OVMmDsPso+UfU5Ne/X9vqV/Hs34DfyqtZeFreNvMmHmSHua6pVpS0RzQw9OLvY4jQvDMrlWMW0dlx/OvRrayS0sgqr82ACQO1aFrYRQAYUcVNdoPIYj6Vz1FdHTDcyQCoA9aztYQNaN34rUH3wD64qnqsQki2AdRzXMkbpniuvWvl3jkDAzWIME4Ndt4hsXDvx06/WuInRonwMkiuiOxzTVmWYCUYDPfiti3uGAAzWDBcoSBICpHqK1YGUjIbPuKqwos2Y3yMmrKydCTis6B8cVa3YGe1Q7miSJ59pjz39awL0BnOK05Zv3fXI7VkznL5zVJESZQaPBqJkGKuEdagdcCqRhIrMQKx4yumQ6jdkZxK0mB3z0/WtaTg1E9st1DcW7Dh0P51tfQxW5d0+4gurBJvI8tyBnB71FeRhWUg9SAD+NVLFxFYpHvA4q1u8203nkKc1lbQ7oaanuvh4EeEdNB6/Zk/lWgRVfSo/K0CxjI+7bxj/x0Va4r1YrQ+Zm7ybG0lOpKZI3vSU6kxQAnGKTqKXFB9qAEpKWjjNACfSjvRiigBMUtHeigApQKT2pwoAyqWk60tAxaUUn4UooAWnCkFL3oAWnU2nCgQtLRS9BQM8s+L0QiXTdbt1/0jTbiOYleu3cWP8hXpGn3KyW6yIflZQy49DyK4jWNe0sanNoWqaa89vcZWWQEEgt3A9s10mhxm20u3si5cwIIdx7hRgE/gBXlYir7VXtsfQ4fDOgkn1NvDTNuNbOnR4fp071QtUGO5NdBpkKmTecYArmpq7OuWxfSEMgPHSkEQB6VprDsiznPFVXXA4FdjicyKj/KtQT3EUELNIeBTruTywecVzd9dmW+hiP3S4z9M1zzdjeEbmnYpE06/aHKIzZJAyQKg1e7s/7QkMXyopwgPcVyfjvx5aeENLN3JZ3FwFIBSDGee/NcLY/FjRfFMgj0uSWO727mtpoyrgDqRjIP51EItq6Q5TSdmzpfE9zahD5YJZupNefXF/o0F+ttdX1tFO/3Y3kAY/QVZ13Wp5oHMe0SYwN3QH1NeW3Xgma61R9QudRMryncxcck1vCKe7OatKSa5Vc9G1CG3EBmhHTuOhqK0maNgAcqayvtaWulx2TS+ZKFCjmrFq/yjJo6B1OotpgwBz07VbeT5MZNYVrMQw5rV37ogc9aRSZHJKcEVVbk1JJ96ovrSFJjT0qJxxU5qOQfLQZXKEo9KjEqW5aV+AFP4n0qxIuao6jDJNYskP38jH51pF30ItqZrSNJMtvACS3pXQQWbr9l0/rLNIqkegJA/rUVlpkdhELjaGlxk85roPBGnS6p41t5pfmETfaJCegC9B+eKIrmkkb1KijBvse0IgSJUUcKAoH0oIFO7Yppr1D5wQikPSnU2gBDSU7pSYoAQjvTfWnUnagBooNL0pKADvRRQfagAxRQKMUAHWnD0ptKOlAGX3paKKBi0opO1LQIUUo4pOtAoGOFOFIOlKKBDh0paQU4UDPOfEmlRp4uhuHBEbHn65rtpo/LFpdqP3c8YGfdcD/Ck1XTYL63fzQQwX5WHUN2/wAPyognD/D+284/vIZemPQ4P6V5NaHJUa6M+noVVXw8ZLdaM17VwF5/OtqyuNhGOhHPNc3aSZiBB7VpQykYziuaLszS9zuYp1eDjGM9DUE2M9sVj2l6UABbirbXG5eDXYqiaMeWzM7U3PSsb7BJIpm79Rmti5XzZQB3NWGRFg2bRwOa53q7s2TsrHk/jLSLjV42tltXn3/KygZx9a0fBfw10fwxoryrax/aJlzKxUFm9s+ldubeMPlRim3G5bc8Y4456UotoKlmkkcHceGNPv8AVJ0aFRj7uBXJax4agttyIpA7Y7V3lvfBdYlXd8w44qtrduDbrOw4qrmbVzydtFjilLBBn6Uv2bb2rpLmOPcdpBrNkjA7U0yGrFJE2nNaMEv7vy2/A1VIAoD4FDESuecUwfWmmQsaM0ESY+mvmgE4xSnpTMrlZhUTZHIqwy1C3JxVR3HItABoQXI5rsvheManqahAV8pG3dx8x4/z6VxsAF0I4rYNNK/yrFH8zMfQAV634P8ADreH9DK3GDeXDCSbHO3A4XPfGT+JNdGGi+a5njZxjTt1Z0H4UhFLSGu48YbSU6koAaetJSmkoAQ8dKTvS0lACY9qKWkIoASjpS4pAKYBRS0fWkAmKUCk704Z9aYGUDziloA5pe9IYcUvak6UvFAB0pR1oooAcKcKaKdQAopwNNFOFAhSNykHoaoahHjw7c28YJdX81fcHg/jnH51fFRz5WPzUXLKCceoxyKxr0+ePmdmCxDo1E3s9zN0i68y3UHOe4rdiPGc1hGGG3mjuLVwYZckKOqn0Na8D5UYrxpLU952TsjShk4q7HMcfe/OsqNvU1ajkwM5oTsC1L45beaGfK8HvVcS/uwM8n1p2/0o5rjHgZPt1qvfXFra2TTXUqRRL1djjP8AjSXWo2en2L3VzIqxqOc14z4o8ZPrN/IFkC20XCqDgAVpGPMNW3ZuXV7pA1BrmLUChJJOFNc/q/jpDE1lZK0o6FpO1cRNr8f23y4GMpByNgLfyqjImo3Ezyw6bchSf4k2j9a3VFF83ZG+2vs/MigZ6bakTVoZFALYNchcx62U+S0SLYOrGq8v9qxybDDGrADktwa09iuhzTbW6O6a5QjIYUzzQehri7eXWbh/LjEaKOrHJrprRZkhBk+9jmsJx5TPmuaCN81TVXjFS81KJkPU9jUgHGc1Ev3hU+OKoysMcfKKqOOTVtulVpD1NOG4Seh7l4etbKPw/Y3NvZ28UkltGWeONVLfKOpA5rUNUdBTZ4U01fS1j/8AQRV416yPFluNNNPWnmmHrQISkNLSUANopTSUANNH4UEgUZ4oASil7UUAIelJ26UvejpQAlFL2opgHSijrSgUgMuijNFAwpRSUgFAh9FIKWgB1Lmm9TThQMcKUZptLQIdS+1IKAaAM57Yh3iGTt+dD7en8xVm1kynXpRczGC4gkwSpbafbvUajybtkHC5yPp2ryMVDlm7H0OHm50ozfoaaElc1Kr9+naoYmG3NOB561ys3iybzSO9ZOteIYtKtvMl4B9Kvlh+NZeoaRb6tGYLqPfG3Vc9qmLNGjyzxT4w1LX7ltN0S2muWAG5Yhu2g9MnoPxqDQPh5dPIt54ikTDDcIFb5V/3vU/pXrdt4W0+0jUWlpBCRgfu12/njrU0ukxqmXVSQO9dsKsIoIaO7ONg0TSrGzMdvaoNhzgJjI55/lVG8YSRlFtVRR0wMH/PStvWbuexgKwxpnsK4a51DVrtcOFXJznFV7ZPY6JV0ivqEUm1kAVVwV6ZJBrHbSWdVPJIG3Lc8V0MdtIcF8saeYSB06VLqtnHUlzamPBYpCASOalcAVblTauTVJ2GajcxYK2DUu7jiqhfnOacstMhl2MjqaeZQM81SEuB1zSNIT3pozZZeXjI5FV5XPlEDqeAKjMoA4NLayI2q2nmf6vzk3fTcM1cFqS3ofRNnD9n023t/wDnnEifkoH9Km7Up6n600mvUPGGmm06mmgBKQ0tJQAhpDS0hoAYRk0vtS45ooAKSlpKAEpaKKAD8KQjJpaSmAAU4d6QU4UgMjvRS0daBhilpBS0CD0paSloAUdc0tJ2oFADx0oopRQMXFL2pBTqAI5Y0liMbjg+n86z3gvIZTLJNHJCAAMKQw+vatTFKyKyFCMg8EVnVpRqLU3o4idLRPQht5cgelTsdvPWs5d1rcGJjx1U+oqyJwVxmvGqQcHZnt05qSUkTb+2DU8ZA5wD3rPMvPB61YjkyorGx0XLpk59faqN5NIEZgcg9Oal3FulJ9m84kEGmNM47Vk8xskFvYVhG1ld8LEQM+lemnRo2G5kBAqldaZHH91QB9K0iiGziY9Ocr82R26VBcWZQdK6u4iKg5HSsK+fCnnk1Qmczdx7V+asaU4Na1/OMsCawppMscVaMmDN6/pTN+3HNRtJg5qtJche9MzZeMwA61Xluvf6VQe6JOAaahZ265qkQ2aMcrSCpSxjIcdV5H4VHbx/KOKkkGF6VadmRbQ+lrWYXFjDOOkkauPxGaeaxvCF19t8C6XOWy32dUb6r8p/lWwa9NO547VnYQ0lFFAhKTvS0nWgAxSUtFADaMU760e9ADMGjGaXHcUUANxzRinUYoAbijFO6dKPSmA0Dmnim+1OFIDHzRQKWgYuOKKSloEHelxRS0DClFJS0AOFLSCigBwpQeKTNKKBDxSjrTec0ooAjuLdLmLYxwRyrf3TWDLdS2s5guBtde3qPUe1dHmoL2wttQt/KuE6fddeGU+xrnr0FUXmdWGxDpOz2MWO7Vv4s1oQzg965jU9P1PRSZyDcWo/5bRj7o/2h2+vSorTWkYAhwfxryqlKUHZntU6sZq8WdvHKCQSQPxq/BcKGB4rk7fUlkAw3ap/7Q2kDdWZqmdfJex7NoK8Vh3t6gZskE+9ZEurfKRvIFZNzqYLHLAn61V2LYuXl38hw3XtXMajc7ix3U661JQp+aufvtRGCA1NCbKt5Nkk1lyygcmo7q+GTzWXLds7YXk1qkZNlqe5UA+tUGkZ29qAjuck5qVYiO3NUjNsYiMTyK0LaLLVHFExOcVpW0QBAxTMyeKPFJMvy1YVe9RSqSDSTKS0PUvhbrMM2hS6K8mLi3cyqpPVGPUfQ5/MV3xxXzXYaxdaBr1rq1kf3sLEFD0kU9VPsRX0NpOq2mtaJb6nYvvhmTcPVT3U+4PBr0aM+ZWPLxFPllzdGXCeaSg0lbHOFFFJQAtJnmilwKAEpe1FJQAUUUUAJRS0UAFFGKKAEx7UvagUtAGNS0lFA2KPelFJS0CFFFFA9KAFpe1JS0DFpRSUo+lADqUUgzS0AL34pw4FNFLQIcPenCm96XPNADxjFef+LPCwtZ/t+mgxxufmiXore3sa74NTLqBLqzeBxww6+h7Gs6lNTjY2oVXTlfoeNLe6han5XJx2pzeKp0+WeJ+O45re1TTNrmRV2tnDAetc9c6aJCRs5rynFHtKTRWuPF8eDhm+hrLm8U784zilvdGlBJEefwrGl011PMdCggc2TT+IJpOAcVnS39xKTknn1qYWDD+E/lS/ZCv8NUoohyZRIkfkk1NDCQvSrS2xPbFWFt+PanYVyCOI56VYWDc3Splg6HFWooDxxSJGQwYFW44sYOKdHHx0qYDjpSLSGEYOKhkGRVgjioJKCjHv+B9Dmt/wX45n8JXEqSwy3enzZZ7aNgGD44Zc8Z7EHr+FYGpcCs9W7GtoycbSRjKCmnFnvHh34t+BvEt4tla6qbO+Y7Ra6gnkOW9AT8pPsDmu4wQemD6GviXxJpazMbyBQJf4gP4//r1v+CPjR4s8JbLO6lOsaavH2a8c74x/0zk5I+hyPau+FRSVzzKlFwdj66ornvB/jTQ/G+gjU9GnOVws9tJgS27H+Fh/Ijg10NWYi0UUfjQAUlLRQAntRS/WkoAKKMUd6AFo5oooAQfWnCk706gDEooxS0DCiiloAKXpR3pKAHUtJ2paAFpabTqAFzmnCmUvORQIeKKTNKDQA7NLmm5oB70AOFPBpmacDQBz+rWwF+wx8sg3j+R/z71gy2YWXpXYavCJLNZscxt19jwf6VjzQblzjmvLxMeSp6nt4SXtKa7oz10mK4j+ZR0qtL4TjkOcfpW9YOEfYxGK34Y43j9fYiubmOlxPL7rwqEU4TBrAvNEMWSBXtNxYrICFXgjtXD+JLZYOw465q1IXs7nnD24RyO1N2AcCrVww84kGo1G48YqjPlsNRPm6VbhTvUSREMD1q/HEdooBIZt9qQr3q15RPQU0x4U0FNFQ9KglHtVp8iq0mADQSzD1TPkkj1rJkfa+a2NS5iYH0rnbiTgc1rHUye5S1u8WDTGfOXY7VHvXF1p65dm41ARBspEMfietZddtKPLE4K0+aRq6D4j1rwzqy6loeozWV0FKb4z95T1DA5DD2Ir2jwV+0NcxyR2PjW0E8Z4/tC0TDr7vGOG+q4Psa8CpQa0MWrn3vpeqabrWlRanpN7DeWkoyk0LZU+3sfUHkVc7V8X/D74kaz4A1iSe0RbuynAFzZSuVWTHRgR91x649jmvpnwZ8V/CHjUrbWd21lqJH/HjeEI7f7h+6/4c+1O5DjY7ejFOwckHINGKZI2kNOxSGgBKWiigBaDwaQUpoAQ04U32p1AGLzRS0UDClpKKAF70mKKUUALRSdqUUCFpaSigB1LTaUGgB3vRnPSkBpelADgaKbk+lLk0APB45oB7Vy3i7x/4d8F2mdVui92y7orKH5pX98fwj3NfP3iv4v+LPEs8kNpctpFgcgW9oxDMP8AbfqfwwKBpXPoTxf458NeFNJnOrX0bTmNtllEwaaQ44AXt9TgVa06aLUNHguoW3JLEsin1BAI/nXxoZHkkaSR2dzyWY5J+pPWvpT4LawdQ+HMFrISXsZGtjk5O37yn8mx+FcONjeKkenl8uWTidlLEyOSOKt6dfhJQkhxkY5q3Nb5AJBwfSsy4tijb1HT0Feceo0dYZIxblsjkeua8n8a6ji7MQJ9MV082tS2lkyEHp9M/lXmGt3Ul7qTyuep71cFqEnoZZLO+e1WIRzzSRxZXPepooiZMVqc7J4kLMAOlacMHA4ptnb/AC521sQWpKcnHsO9Sy4oz2iKrjBz6Cq8qbQcnHY4rbmhCJhQef4v6Csm4ADnGMUIGZkw64qjMcA81fl5U9SPfvWddfKhyapGbZjak4ELEmuM1O/FvbM4OX6KPet3XtRjihYs4Cj8zXn15dvdzl24A4VfQV1Uad9WcdapbRFckkknknkk0lFFdZxBS0UuKAEpQSCCOCORQBS4oA9O8E/HDxX4V8uz1FzremLx5N0582Mf7EnJ/Bsj6V9GeEPiL4T8bwKNG1JRebcvYXGI509fl/iHupIr4lp8ckkMySxSPHIh3K6HaVPqCOhp3JcUz9AMUhFfKnhL49eL9AVLXVymu2a8YumKzKPaUcn/AIEDXu/hH4qeDvGW2Cxv/sl8f+XK9xHIT/snO1/wOfamQ4tHZ4o7U8jkg8Y7U3FMQlKaOlFIABwKBRilHpQBjUfhRRQMKKWkoEFHel7UlAC0opKO1AC/hS0n4UtAC0o60lKPSgBR1pea5Dxf8SfDXg6No7y4N1f4+WytiGf/AIEeiD6/lXifiT43eLdZEkGmNHo1s3GLf5pSPeQ9PwAouNRbPefFXjfw74PtPN1i9CzMMx2kQ3TSfRew9zgV4d4o+O3iLVDJbaDCmj2x48wESTkf73RfwH415nPcXF3O91dzyzzvy0krl2P1J5qk/wB4mlctRSLNxc3F5dPdXdxLcTSHLyysWZj6kmmKaiRu1PGM8UiiQ/6rNep/AvW/sXje+0eR9qXVussak8Fk6/8AjrH8q8t6xEH0rX8J6n/Y/jnSNYyESK4VJD/0zb5SfyNZ1o80GjWhPkqJn2em1occbTyBUM0Pykg03TJlms1w+fxqwxCkA4xXinuJnN6lYlom4z9a4e+0nFwxIHr0r0+6iVweFwf7wrnb6zQsSVHHYjj8auDsJrQ4pbBVBOOB7U6K2xNgAAH8K254FXJPbvxUNrCGugxAHP1NaXMpItWWnttBZSK1hbiKLPVh1J7Vcs7MmMYTJ7UtwhiiOcjHTAH51Ny1oYN7tAJ546n+lc3eT/ORn/gI/rWlq9/HGCodQB+PNcTrHiGy0xTJe3CxZ5CDl2HsKuMW9iJzS3NSWVdpOOR71x/iXxJaaahg3rLcf88kP3fqe3865zW/Hd9eq1vpymzgPBbOZG/H+H8Pzrj3dnYliSSc5NdlOh1kcFXE9Ili+v7i+uDLO+T2A4A+gqrRRtOa6krHG3cKAKdtxS0AIBS0AUtACYpfailFABgUYpaMCgBMc05Rg57jmjFO6UAeieE/jT408LrHbS3g1ewXgW9+S5UeiyfeH45HtXuPhT43+CvEgSC9uTod63Hk3zDy2P8Asyj5f++tpr5JoGRTuJxTPv8AUqyK6FWVhlWU5DD1B7ilxzXxV4T+I3i7wa6pourSLag5aynHmwN/wA9PquDXuXhX9obw5qQS28U2kmjXB4NxHmW3J9T/ABJ+II96LkOLPYsHFAFUtL1zRNciEmjavYagpGR9lnWQ4+gOR+VaO2mSYNFJ2paBhRRQKAFooooAKUUgp1AB9KX61zniXx14Z8JQE6vqKLPjK2sXzyt/wEdPqcV4h4s+N/iDWfMtNCT+yLNuN6ndOw/3ui/h+dA0rntnibx94W8KKU1XUV+0dRawDzJT/wABHT8cV4r4v+Nmu60r2egI2kWZBVnVgZ3H+9/D+HPvXl0ksksrSyyNI7nLO5yWPqT3pvelcpRHSyPI7O7M7scszHJJ9Se9MXO6nYo6Uih/8PFVpBgnirSjK1DKvNAEC9amQc1FtqeMc0AOYYjP0NSYHkAEcEYIprDcjD/ZNKp3RK2OooA92+FnxNt5LaHQtbuFiu4wEimkOFnA6An+9/OvaPtcUkPD7c9ia+HSWH0rqdB+I/ivw/GsFrqLT268CC6HmKPoeo/OuGrhLu8Tvo4yytM+rJpwhyr1kX1wrcAA/Q8V5BZfHFJFVdW0WQHHzSW0gbn6HGPzq7/wt7wzIcsl/H/2wyf0auf6tNdDqWJpvqdxPjJ3E+uT0qzpkY88Nxnt3AFeY3Xxf0BMi207UJ8dCdsYP1yTj8qxp/jXrMaFNI0mwtGP/LabMz/lwv6VpHDzfQzliaa6n0opK2vyncVGdoOfxPpXnHiz4geGdGLw3OsQ3NyoINvZnzWz6HHC/ia8F1zx74v8RR+Vq2v3c0HT7PGwii/74TAP45rnOcAfyraGE/mZhPG9Io7fxB8R7/UpGj02AWUXTex3SH+i/hn61xM08s0zSyyPI7clnOSfqTTMUba6owUdjknOU3eTG8mlxTwvGacFxVEDAvtS9BxTj0x2ptADaXFLilwKAExRS4pDQAuKBRg0oGcUAAFOxijFL3oAbinfjSY4paAExRjkUuOeelLgd6AEH0pSeaKKAHQzS21wtxbyPDKvIkjYow/Ec16F4Z+Nvjzw4yRS6iNYs14+z6jmQge0g+cfmR7V5yetJnigR9yUE9qO1FUZgKWkx6U4UAGKKR3jiiaSV1RFG5mY4AHck14/42+NtrYmTTvCSpdzjKtfSDMSf7g/iPuePrQC1PTNf8TaJ4X043utX8dsn8CHl5D6Ko5NeEeMPjfrWrGSz8OK2lWZyPOyDO4+vRPw596821XV9S1rUXv9UvZru5c8yStk/Qeg9hVAnmlctRJJppZ52mmleSRzlndizMfUk9aZSUtIoXNOFNPFAJBoAkoPWkFOoAkjFNkXvTk4pxGRQBTK808HGKey4OajJw2KAJumCabGwUGM8be3tTwcqKjZcn0I6GgBWGR2qEr6Cn7mUcjHv2pGIIzn8BQBFtPrTSGqXPPrSfhQBGFNKFp+OKTFADccUYp3GcUuOOlADNtGOO1OIPqfwpKAFxzzSGl7cUnSgBuM80uB3pcUcUAGOtJjFHfpRigA+lJ3pfalxQAAcU4YpBThigAxxS8Y4o+lLjNADcdaMc07b6UmKAExS45xS4o70AJ260hp3amnrQA09eKQmlNNoA+5aPrRSd6oyHZGaztb17SfDukvqOr3iW8C9N33nP8AdUdSaxPG3j3SfBWmh7o/aL6UHyLND8z+7f3V9/yr5r8R+KNX8V6y2o6vcF25EcS8JCv91R2+vU0MaVzpPH3xP1Txc7WNsHsdIB4twfml95COv+70+tefMcmnOcLmmCpLsNI4poqXHy9KgJwaBi4pRSAjNOoAKOnFH8qXFACinimCpAKAHjpTs0wUuaAEI+Wq8gIfNWecVE65FACI4K4zSsT6ZqEgqacr56igB3mAdablW7ClPJphTjrQAuFx1NKQvqKZtweMk/Sjn/8AVQA7C+9GADyKZz3/AMKMEmgB5Yf/AKqbu4pNvfjFLt55oATJoHWlxmlIwaAE9qXB7ij6YoJ/GgBPxpCaCfSk/WgAopR6UtACYpeaMYpcUAApw6UDtRj1oAXpS4pMZ5pcigA796XGe1J36U/rQA3HOKaac3Apn40ABpD70400g55oAaaaeDTjTePagD7lHWsbxR4l07wr4em1XUJVUKCIos/NK+OFArYkkjhgeaVgsaKWZj2A5Jr5J8eeL7vxh4vuL2RyLOEmK1hzwiZ6/U9SaozSuZOta1f+IfEFxquoymSeZsn0UdlHoB0qr2qGPrzUpNSaEcpwoFNXpRN19qRDxQBKOVIqCQYJqwtRSjigCAHmpAai6Gnr1oAkpe1HFHagAA7U8U0U4UAPHSkzz60Z4pOQDQA48ikPNGTR29qAImXIqPBB4qcjFNIzQBFn8qXdkUpWmke1ACnFGBTegzS5NAC4oxjHNA5o70ABHc9aPxpD1paADHHakNLTT0oAXsOaQnnFAoPSgBtOopaAEwKO9HTrS4PpQAnSnDgUlOA9aADHFOwAKPegmgAHP1pO9H1oxmgBVHNP4A/wpEHrTZGIoAjdueKeowoNQKd0vWp+woATv0ofgdacoyc1HKcd6AGA5pTSLnGaU0AfWPxU1ptG+GV88TbZrnFqhH+11/TNfKK4851/Gvoj486hBH4X07SiczTTmYD0VRjP5mvnabKTB+3emyYk0fBxTm601D8wx0NOc0iiKampTpvvZpiUAWE6UkozSx0sg+WgCoeOKF60NwaBQBMDQKavTmnAcUAKM04daQYooAdniko70d6AD8aKBQSCaACm0uaQ9aAE5J60mMUvc0UAMI9qTFSemKQj0zQA0e9LxijtmkoAP1pM0tJ3oATtR1GaKOO4oAPrS/WjHPNFAB36UYoo60AAo70valGef5UAAHOacP8AOKQDilzzQAE00/WikoAUdOtSAUxRzUq9qABuF4qrM+eKnlcYqm5y1AD4gc5qc8/4VDCOM1Ooy1AC/wAGarStk1ZkIVapE5agCZfu9KD1pR05pCecCgD1L416ob34nvaBspZwJFj0J+Y/zFeaTKGUit/xve/b/iHrN3uyHu3APsDgfyrCPK802JbEFs/Ow9RU79aqn93cq3QZwatvzSGRS5LVGvWpJclzUa9aALCGpH+5USVK33KAKjjmmgU9hzTaAHr0pw+lNFOHrQA4fnRSUtABS96T6UZ4oAMjOaKB0o79M0AJ26cUhpTTT1oAO9GT9aO9A6daAF49aQ80c46/hQBQAnaj3pT6UmcUAIKTPSl59KQ5NABkdqMUDr0o/SgAz+dHegDIoFABijFL7UY5oAMU7A70DrR260AHAFIetBNN/MUAKOh/nQBk4/M0gz/hTwKAHAYNPz8vFIMetNLUAQzNxVepJWy1RUAWIulWI+tQR8qBVhBhCaAIZjwarDlhUszc4FRxj56AJ+gpgBLZp7UIMsBQBbv7j7TqdxcH/lpIz/mSaiXnIqJ2zJT1PIoAiuV44qdDuiQ+oFRzD5DTrc5gT24oAbJ1PWmr1pz8mmL1oAsJUv8AAahWphypoArsOtMxUrjBqI5zxQAopwz/APXpopwHFACilNHSk70ALSZpTzScc0AKfQ0lB/SkzQAp6dKTt15oyaQ0AHU0nQ80ufYUlAC96WkHuaWgBD6ZppOaXjk0mOeaAAZoK0Yo5oATr2Apf1oP50YNAB2opePwpccAc0ANxyKUClHXtQOtAC/Skz+FBPvTSaAENFGe9KBzQAqgYp/b3pB7UpHFAC+oFRucLTz06VBK3FAELHLGkHXFFKv3qALCD5RVg4EWfWoU6gAVLIcRgD0oApSHL9aIvvdsU1jlqfF3NAEp561JGMKW/KoxycCnynbFtoA//9k=" style="width:100%; height:100%; object-fit:cover; object-position:center center;" alt="정환희 PD">
+</div>
+      <div class="pd-name">정환희</div>
+      <div class="pd-role">
+        <strong>와디즈 PD</strong>
+        <strong>5년차</strong><br>
+        테크·뷰티·패션·푸드 카테고리 전문
+      </div>
+      <div class="pd-stats-row">
+        <div>
+          <div class="pd-stat-num">500<span style="font-size:18px;color:var(--gray-300)">+</span></div>
+          <div class="pd-stat-label">누적 프로젝트</div>
+        </div>
+        <div>
+          <div class="pd-stat-num">100억<span style="font-size:18px;color:var(--gray-300)">+</span></div>
+          <div class="pd-stat-label">누적 매출</div>
+        </div>
+      </div>
+      <p class="pd-desc">
+        와디즈 내부 PD(Project Director)로서 소형 스타트업부터 대형 브랜드까지 다양한 규모의 프로젝트를 직접 기획·운영해왔습니다. 에이전시가 아닌 와디즈 내부 인력이기 때문에 플랫폼 정책, 알고리즘, 광고 구조를 가장 빠르게 파악하고 적용합니다.
+      </p>
+    </div>
+
+    <div class="pd-right reveal reveal-delay-1">
+      <div class="ref-section-label">대표 레퍼런스</div>
+      <div class="ref-grid">
+
+        <a href="https://www.wadiz.kr/web/campaign/detail/290656" target="_blank" class="ref-card">
+          <span class="ref-tag beauty">뷰티</span>
+          <div class="ref-title">써마쎄라</div>
+          <div class="ref-highlight">단기 매출 30억+</div>
+          <div class="ref-desc">소형 뷰티 기업임에도 집중 마케팅으로 단기간 30억 매출 달성</div>
+          <span class="ref-arrow">와디즈에서 보기 →</span>
+        </a>
+
+        <a href="https://www.wadiz.kr/web/campaign/detail/359839" target="_blank" class="ref-card">
+          <span class="ref-tag outdoor">아웃도어</span>
+          <div class="ref-title">헬리녹스</div>
+          <div class="ref-highlight">대형 브랜드 운영</div>
+          <div class="ref-desc">글로벌 아웃도어 대형 브랜드의 와디즈 프로젝트 전담 운영</div>
+          <span class="ref-arrow">와디즈에서 보기 →</span>
+        </a>
+
+        <a href="https://www.wadiz.kr/web/campaign/detail/400624" target="_blank" class="ref-card">
+          <span class="ref-tag tech">테크·가전</span>
+          <div class="ref-title">해외 빔프로젝터</div>
+          <div class="ref-highlight">누적 5억+</div>
+          <div class="ref-desc">해외 제품 수입 유통사와 협업, 단일 프로젝트 5억 펀딩 달성</div>
+          <span class="ref-arrow">와디즈에서 보기 →</span>
+        </a>
+
+        <a href="https://www.wadiz.kr/web/campaign/detail/391378" target="_blank" class="ref-card">
+          <span class="ref-tag tech">테크·가전</span>
+          <div class="ref-title">소형 디바이스</div>
+          <div class="ref-highlight">틈새 카테고리 공략</div>
+          <div class="ref-desc">소형 디바이스 카테고리 특화 기획으로 높은 ROAS 달성</div>
+          <span class="ref-arrow">와디즈에서 보기 →</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-eyebrow reveal">운영 방식</div>
+  <h2 class="section-title reveal reveal-delay-1">6단계로 완성되는<br>펀딩 프로세스</h2>
+  <p class="section-sub reveal reveal-delay-2">기획부터 정산까지 전 과정을 함께합니다.</p>
+
+  <div class="steps reveal reveal-delay-3">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">상담 & 제품 검토</div>
+      <div class="step-desc">제품 경쟁력, 카테고리 적합성, 예상 성과를 함께 분석합니다.</div>
+      <span class="step-badge">무료 · 부담 없음</span>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">프로젝트 기획 & 심사</div>
+      <div class="step-desc">페이지 기획, 리워드 구성, 가격 전략 수립 후 와디즈 심사를 진행합니다.</div>
+      <span class="step-badge">약 2~3주 소요</span>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">오픈 전 알림신청 모집</div>
+      <div class="step-desc">오픈 전 알림신청자를 집중 모집해 초반 펀딩 속도를 높입니다.</div>
+      <span class="step-badge">오픈 예정 단계 · 14~21일</span>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">펀딩 오픈 & 광고 집행</div>
+      <div class="step-desc">본 펀딩 기간 동안 와디즈 광고·SNS 마케팅을 병행합니다. 광고비는 실제 집행 금액만 청구됩니다.</div>
+      <span class="step-badge">평균 14~21일 진행</span>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-title">배송 & CS 지원</div>
+      <div class="step-desc">펀딩 종료 후 배송·고객 응대까지 필요 시 에이전시 연결로 지원합니다.</div>
+      <span class="step-badge">선택 사항</span>
+    </div>
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-title">정산 & 재오픈 전략</div>
+      <div class="step-desc">정산 완료 후 성과 데이터 리뷰. 재오픈 시마다 팬덤이 쌓여 매출이 우상향하는 구조입니다.</div>
+      <span class="step-badge">수수료 18% 내외</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-eyebrow reveal">카테고리별 성과</div>
+  <h2 class="section-title reveal reveal-delay-1">실제 데이터로 확인한<br>카테고리별 평균 지표</h2>
+  <p class="section-sub reveal reveal-delay-2">2026년 기준 실제 프로젝트 데이터 중 펀딩액 500만원 이상 프로젝트만 반영한 평균값입니다. 개별 성과는 제품·마케팅에 따라 달라질 수 있습니다.</p>
+
+  <div class="cat-grid">
+
+    <div class="cat-card tech reveal">
+      <div class="cat-emoji">⚡</div>
+      <div class="cat-name">테크 · 가전</div>
+      <div class="cat-stats">
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">분석 프로젝트</span>
+          <span class="cat-stat-value">465건</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">펀딩 성공률</span>
+          <span class="cat-stat-value" style="color:var(--orange)">84%</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 펀딩액</span>
+          <span class="cat-stat-value">약 1,560만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">2026년 최대 펀딩액</span>
+          <span class="cat-stat-value" style="color:var(--orange);font-weight:800">5억 1,120만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">오픈예정 기간</span>
+          <span class="cat-stat-value">약 14일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 프로젝트 기간</span>
+          <span class="cat-stat-value">약 21일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">광고비 주요 구간</span>
+          <span class="cat-stat-value">200~500만원</span>
+        </div>
+      </div>
+      <div class="roas-bar-wrap">
+        <div class="roas-title-row">
+          <span class="roas-title-label">ROAS 분포</span>
+          <span class="roas-avg-badge">평균 약 579%</span>
+        </div>
+        <div class="roas-range-wrap">
+          <div class="roas-track"></div>
+          <!-- 최소~최대 구간 채우기: 80%→4%, 1800%→90% -->
+          <div class="roas-fill" style="left:4%; width:86%;"></div>
+          <!-- 평균 dot: 579% → 29% -->
+          <div class="roas-dot" style="left:29%;"></div>
+        </div>
+        <div class="roas-markers">
+          <span>최소 ~80%</span>
+          <span class="mid">▲ 평균 579%</span>
+          <span>최대 1,800%+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card beauty reveal reveal-delay-1">
+      <div class="cat-emoji">✨</div>
+      <div class="cat-name">뷰티 · 코스메틱</div>
+      <div class="cat-stats">
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">분석 프로젝트</span>
+          <span class="cat-stat-value">334건</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">펀딩 성공률</span>
+          <span class="cat-stat-value" style="color:var(--orange)">80%</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 펀딩액</span>
+          <span class="cat-stat-value">약 948만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">2026년 최대 펀딩액</span>
+          <span class="cat-stat-value" style="color:var(--orange);font-weight:800">1억 2,548만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">오픈예정 기간</span>
+          <span class="cat-stat-value">약 14일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 프로젝트 기간</span>
+          <span class="cat-stat-value">약 18일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">광고비 주요 구간</span>
+          <span class="cat-stat-value">50~200만원</span>
+        </div>
+      </div>
+      <div class="roas-bar-wrap">
+        <div class="roas-title-row">
+          <span class="roas-title-label">ROAS 분포</span>
+          <span class="roas-avg-badge">평균 약 420%</span>
+        </div>
+        <div class="roas-range-wrap">
+          <div class="roas-track"></div>
+          <!-- 최소 50%→2.5%, 최대 1200%→60% -->
+          <div class="roas-fill" style="left:2.5%; width:57.5%;"></div>
+          <!-- 평균 dot: 420% → 21% -->
+          <div class="roas-dot" style="left:21%;"></div>
+        </div>
+        <div class="roas-markers">
+          <span>최소 ~50%</span>
+          <span class="mid">▲ 평균 420%</span>
+          <span>최대 1,200%+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card fashion reveal reveal-delay-2">
+      <div class="cat-emoji">👗</div>
+      <div class="cat-name">패션</div>
+      <div class="cat-stats">
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">분석 프로젝트</span>
+          <span class="cat-stat-value">543건</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">펀딩 성공률</span>
+          <span class="cat-stat-value" style="color:var(--orange)">78%</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 펀딩액</span>
+          <span class="cat-stat-value">약 501만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">2026년 최대 펀딩액</span>
+          <span class="cat-stat-value" style="color:var(--orange);font-weight:800">약 8,900만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">오픈예정 기간</span>
+          <span class="cat-stat-value">약 14일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 프로젝트 기간</span>
+          <span class="cat-stat-value">약 16일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">광고비 주요 구간</span>
+          <span class="cat-stat-value">50~200만원</span>
+        </div>
+      </div>
+      <div class="roas-bar-wrap">
+        <div class="roas-title-row">
+          <span class="roas-title-label">ROAS 분포</span>
+          <span class="roas-avg-badge">평균 약 310%</span>
+        </div>
+        <div class="roas-range-wrap">
+          <div class="roas-track"></div>
+          <!-- 최소 30%→1.5%, 최대 900%→45% -->
+          <div class="roas-fill" style="left:1.5%; width:43.5%;"></div>
+          <!-- 평균 dot: 310% → 15.5% -->
+          <div class="roas-dot" style="left:15.5%;"></div>
+        </div>
+        <div class="roas-markers">
+          <span>최소 ~30%</span>
+          <span class="mid">▲ 평균 310%</span>
+          <span>최대 900%+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card food reveal reveal-delay-3">
+      <div class="cat-emoji">🍱</div>
+      <div class="cat-name">푸드 · 식품</div>
+      <div class="cat-stats">
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">분석 프로젝트</span>
+          <span class="cat-stat-value">366건</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">펀딩 성공률</span>
+          <span class="cat-stat-value" style="color:var(--orange)">82%</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 펀딩액</span>
+          <span class="cat-stat-value">약 475만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">2026년 최대 펀딩액</span>
+          <span class="cat-stat-value" style="color:var(--orange);font-weight:800">약 6,200만원</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">오픈예정 기간</span>
+          <span class="cat-stat-value">약 14일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">평균 프로젝트 기간</span>
+          <span class="cat-stat-value">약 14일</span>
+        </div>
+        <div class="cat-stat-row">
+          <span class="cat-stat-label">광고비 주요 구간</span>
+          <span class="cat-stat-value">50~200만원</span>
+        </div>
+      </div>
+      <div class="roas-bar-wrap">
+        <div class="roas-title-row">
+          <span class="roas-title-label">ROAS 분포</span>
+          <span class="roas-avg-badge">평균 약 385%</span>
+        </div>
+        <div class="roas-range-wrap">
+          <div class="roas-track"></div>
+          <!-- 최소 40%→2%, 최대 1100%→55% -->
+          <div class="roas-fill" style="left:2%; width:53%;"></div>
+          <!-- 평균 dot: 385% → 19.25% -->
+          <div class="roas-dot" style="left:19%;"></div>
+        </div>
+        <div class="roas-markers">
+          <span>최소 ~40%</span>
+          <span class="mid">▲ 평균 385%</span>
+          <span>최대 1,100%+</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COST -->
+<section id="cost">
+  <div class="section-eyebrow reveal" style="color:var(--orange-light)">비용 구조</div>
+  <h2 class="section-title reveal reveal-delay-1">팔린 만큼만 청구됩니다</h2>
+  <p class="section-sub reveal reveal-delay-2"><strong>초기 비용 없이 시작 가능하고, 실제 펀딩 성과에 비례한 수수료만 발생합니다.</strong> 인바운드 디자이너 및 마케터가 있거나, 상세페이지 및 릴스 등 광고소재가 있는 경우 브랜드 구축비용은 발생하지 않습니다.</p>
+
+  <div class="cost-grid reveal reveal-delay-3">
+    <div class="cost-card">
+      <div class="cost-card-title">와디즈 수수료</div>
+      <div class="cost-main"><span>18%</span> 내외</div>
+      <div class="cost-desc">PG수수료 및 컨설팅 수수료 포함. 펀딩 성공금액 기준으로 산정됩니다. 사전 비용 없이 성과 발생 이후에만 청구됩니다. <strong>제품의 가격과 기대 매출에 따라 수수료 협의 가능합니다.</strong></div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-card-title">광고비 집행 구간</div>
+      <div class="cost-main">실 집행 <span>청구</span></div>
+      <div class="cost-desc">카테고리·규모에 따라 달라지며, <strong>과다 집행 없이 효율 위주로 운영합니다.</strong> 와디즈 광고는 후불 정산 가능합니다.</div>
+      <div class="cost-buckets">
+        <span class="bucket-tag">소규모 50~200만원</span>
+        <span class="bucket-tag">중규모 200~500만원</span>
+        <span class="bucket-tag">대규모 2,000~3,000만원대</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cost-subheading reveal">와디즈 사전 준비</div>
+
+  <div class="cost-grid reveal" style="margin-top: 16px;">
+    <div class="cost-card">
+      <div class="cost-card-title">소재 보유형</div>
+      <div class="cost-main"><span>150</span>만원~</div>
+      <div class="cost-desc">사진·영상이 이미 있는 경우. 상세페이지 제작 150만원~, 광고소재(릴스 3종) 50만원, 위탁 운영 150만원 or 수익쉐어 5% (선택). 와디즈 위탁운영은 와디즈 공식 파트너사와 협의하여 진행 가능합니다.</div>
+    </div>
+    <div class="cost-card" style="border:1.5px solid rgba(255,92,0,0.4); background:rgba(255,92,0,0.08);">
+      <div class="cost-card-title" style="color:var(--orange-light);">풀패키지형 ⭐ 가장 많이 선택</div>
+      <div class="cost-main"><span>350</span>만원~</div>
+      <div class="cost-desc">사진·영상 없는 경우. 촬영·상세페이지 제작 350만원~, 광고소재(릴스 3종) 50만원, 위탁 운영 150만원 or 수익쉐어 5% (선택). 와디즈 위탁운영은 와디즈 공식 파트너사와 협의하여 진행 가능합니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="section-eyebrow reveal">최근 성과 사례</div>
+  <h2 class="section-title reveal reveal-delay-1">이런 성과들이<br>실제로 나왔습니다</h2>
+  <p class="section-sub reveal reveal-delay-2">모든 수치는 익명화된 실제 프로젝트 데이터입니다.</p>
+
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <span class="case-tag">테크·가전</span>
+      <div class="case-title">소형 가전 신규 브랜드 — 첫 펀딩 도전</div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-label">누적 펀딩액</div>
+          <div class="case-metric-value highlight">5억+</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">ROAS</div>
+          <div class="case-metric-value highlight">900%~1,000%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">프로젝트 기간</div>
+          <div class="case-metric-value">21일</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">알림신청자</div>
+          <div class="case-metric-value">14,479명</div>
+        </div>
+      </div>
+      <a href="https://www.wadiz.kr/web/campaign/detail/400624" target="_blank" class="case-link">와디즈에서 보기 →</a>
+    </div>
+
+    <div class="case-card reveal reveal-delay-1">
+      <span class="case-tag">도서·출판</span>
+      <div class="case-title">15년 만에 부활한 한정판 콜라보 — 출판사</div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-label">누적 펀딩액</div>
+          <div class="case-metric-value highlight">4억+</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">ROAS</div>
+          <div class="case-metric-value highlight">1,500%~2,000%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">프로젝트 기간</div>
+          <div class="case-metric-value">21일</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">알림신청자</div>
+          <div class="case-metric-value">5,209명</div>
+        </div>
+      </div>
+      <a href="https://www.wadiz.kr/web/campaign/detail/388585" target="_blank" class="case-link">와디즈에서 보기 →</a>
+    </div>
+
+    <div class="case-card reveal reveal-delay-2">
+      <span class="case-tag">테크·가전</span>
+      <div class="case-title">4세대 BLDC 가전 — 시즌 재오픈</div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-label">누적 펀딩액</div>
+          <div class="case-metric-value highlight">3억+</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">ROAS</div>
+          <div class="case-metric-value highlight">700%~800%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">프로젝트 기간</div>
+          <div class="case-metric-value">17일</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">광고비</div>
+          <div class="case-metric-value">2,000만원대</div>
+        </div>
+      </div>
+      <a href="https://www.wadiz.kr/web/campaign/detail/395589" target="_blank" class="case-link">와디즈에서 보기 →</a>
+    </div>
+
+    <div class="case-card reveal reveal-delay-3">
+      <span class="case-tag">뷰티</span>
+      <div class="case-title">개발 7년 기능성 선크림 — 첫 크라우드펀딩</div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-label">누적 펀딩액</div>
+          <div class="case-metric-value highlight">1.2억+</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">ROAS</div>
+          <div class="case-metric-value highlight">400%~500%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">프로젝트 기간</div>
+          <div class="case-metric-value">약 30일</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">광고비</div>
+          <div class="case-metric-value">2,000만원대</div>
+        </div>
+      </div>
+      <a href="https://www.wadiz.kr/web/campaign/detail/395035" target="_blank" class="case-link">와디즈에서 보기 →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--white);">
+  <div class="section-eyebrow reveal">자주 묻는 질문</div>
+  <h2 class="section-title reveal reveal-delay-1">궁금한 점이 있으신가요?</h2>
+
+  <div class="faq-list reveal reveal-delay-2">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>개인사업자 혹은 1인 기업도 진행 가능한가요?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>진행은 가능합니다. 다만 와디즈 펀딩은 영업·기획·마케팅·CS 등 여러 분야가 동시에 맞물리는 작업입니다. 개인사업자나 1인 기업의 경우 실제 평균 매출이 낮게 나오는 경향이 있어, <strong>단독 운영보다는 전문 인력 채용이나 와디즈 파트너스 등 공인 에이전시와의 협업을 권장</strong>드립니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>와디즈에서 잘 되는 카테고리는 어떤 건가요?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>실제 데이터 기준으로 <strong>테크·가전</strong>이 평균 펀딩액과 ROAS 모두 가장 높게 나옵니다. 뷰티·푸드·패션도 꾸준한 성과를 보이고 있어요. <strong>공통적으로 잘 되는 제품의 특징은 '시중에 없는 차별점'이 명확하고, 스토리텔링이 가능한 제품</strong>입니다. 상담 시 제품에 맞는 카테고리 전략을 함께 안내드립니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>펀딩에 실패하면 어떻게 되나요?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p><strong>펀딩 성과가 없을 경우 수수료는 발생하지 않습니다.</strong> 단, 광고를 후불로 진행한 경우 실제 집행된 광고비만 정산하시면 됩니다. <strong>리스크를 최소화하기 위해 오픈 전 알림신청 성과를 함께 검토한 후 광고 집행 여부와 규모를 결정</strong>합니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>광고비 없이 매출이 나올 수 있나요?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>확률이 희박합니다. 온라인에서 브랜드를 알릴 때 광고비는 반드시 필요합니다. 보통 <strong>300만원 내외의 광고비</strong>를 사용하여 매출을 발생시키도록 운영합니다.</p>
+        <a href="https://makercenter.wadiz.kr/board/card/749?rownum=5&search_type=title_contents&search_text=&category1_idx=&category2_idx=&page=1" target="_blank" class="faq-link">📢 와디즈 광고 알아보기 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="cta">
+  <h2 class="cta-title">지금 바로 상담해보세요<br>부담 없이 먼저 여쭤보세요</h2>
+  <p class="cta-sub">
+    의향이 없으셔도 괜찮습니다.<br>
+    제품이 와디즈에 맞는지 15분 상담으로 먼저 확인해드립니다.
+  </p>
+  <a href="http://pf.kakao.com/_ybqsX" target="_blank" class="cta-btn">
+    💬 카카오톡으로 문의하기
+  </a>
+  <p class="cta-note">빠르게 답변드립니다 · 상담은 무료입니다</p>
+  <a href="https://makercenter.wadiz.kr/board/card/673?rownum=227&search_type=title_contents&search_text=&category1_idx=&category2_idx=&page=1" target="_blank" class="cta-service-link">와디즈 서비스 알아보기 →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <strong>와디즈 PD · 정환희</strong><br>
+    Email : <a href="mailto:hwanhui.jeong@wadiz.kr" style="color:rgba(255,255,255,0.5); text-decoration:none;">hwanhui.jeong@wadiz.kr</a> &nbsp;·&nbsp;
+    전화번호 : <a href="tel:01087178884" style="color:rgba(255,255,255,0.5); text-decoration:none;">010-8717-8884</a><br>
+    <span style="font-size:12px;">본 페이지의 수치는 실제 데이터 기반 익명화 평균값이며, 개별 성과를 보장하지 않습니다.</span>
+  </div>
+  <div>© 2026</div>
+</footer>
+
+<script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+  // open clicked if was closed
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('active');
+  }
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth anchor
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
